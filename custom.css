@@ -1,0 +1,53 @@
+.wrapper {
+    width: 440px;
+    margin:0 auto;
+}
+.gameboard {
+    width: 440px;
+    height:410px;
+    border:3px solid white;
+    z-index: 1;
+}
+.gameboard div {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.normal {
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
+.bottom {
+    border-bottom: 1px solid;
+}
+.left {
+    border-left: 1px solid;
+}
+/* Define the 3D perspective view and dimension of each card. */
+.card {
+ -webkit-perspective: 600;
+ /*margin: auto;*/
+ /*margin: 5px;*/
+ position: absolute;
+ margin-left: 12px;
+ width: 70px;
+ height: 80px;
+ -moz-transition: all .3s;
+ -webkit-transition: all .3s;
+ transition: all .3s;
+ cursor: pointer;
+}
+.front {
+}
+.back{
+ /*opacity: 0.5;*/
+}
+.card-removed {
+ opacity: 0;
+}
+#front1 {
+
+}
+#back1 {
+
+}
