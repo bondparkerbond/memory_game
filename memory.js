@@ -1,3 +1,4 @@
+var first_card = 9;
 $(document).ready(function(){
   /**
    * Randomize array element order in-place.
@@ -44,6 +45,7 @@ $(document).ready(function(){
   $('#front16:first-child').html("<h4 class='center-align'>" + randarr[15] + "</h4>");
 
 
+
   // arrtest = [1, 2, 3, 4];
   // if (arrtest[1]==2){
   //   $('#front2:first-child').html("<h4 class='center-align'>2</h4>");
@@ -70,6 +72,14 @@ $(document).ready(function(){
   //   // if not the same flip them back over
   // else // if no cards flipped over, flip over card
   //      // store value to compare?
+  function compare(){
+    if(first_card == 9){
+
+    }
+    else{
+
+    }
+  }
 
   var counter = 0;
   $( ".card" ).click(function() {
@@ -79,10 +89,11 @@ $(document).ready(function(){
     if (counter == 2){
       console.log(counter);
       Materialize.toast('Checking for pairs!', 1500);
-
+      compare();
       counter = 0
     }else{
       Materialize.toast('Storing Value', 1500);
+      first_card = randarr[9]
     }
   });
 
@@ -156,7 +167,9 @@ $(document).ready(function(){
 
   $('#back1').click(function(){
     // $('#front1:first-child').innerHTML = arr[0];
-    Materialize.toast("#{card 1}", 1500);
+    var one = $('#front1:first-child').text();
+    Materialize.toast(one, 1500);
+    console.log(one);
     $('#front1').show();
     $('#back1').hide();
   });
@@ -188,7 +201,6 @@ $(document).ready(function(){
     $('#front8').show();
     $('#back8').hide();
   });
-
   $('#back9').click(function(){
     $('#front9').show();
     $('#back9').hide();
