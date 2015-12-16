@@ -1,4 +1,5 @@
 var first_card = 9;
+var compareArray = []
 $(document).ready(function(){
   /**
    * Randomize array element order in-place.
@@ -45,14 +46,6 @@ $(document).ready(function(){
   $('#front16:first-child').html("<h4 class='center-align'>" + randarr[15] + "</h4>");
 
 
-
-  // arrtest = [1, 2, 3, 4];
-  // if (arrtest[1]==2){
-  //   $('#front2:first-child').html("<h4 class='center-align'>2</h4>");
-  //   Materialize.toast('2 = 2', 1500);
-  // };
-
-
   //onclick function add flip class and then check to see if cards are the same
   // function selectCard() {
   //  // we do nothing if there are already two cards flipped.
@@ -73,29 +66,17 @@ $(document).ready(function(){
   // else // if no cards flipped over, flip over card
   //      // store value to compare?
   function compare(){
-    if(first_card == 9){
-
+    if(compareArray[0] === compareArray[1] && compareArray[1] ){
+      Materialize.toast('Its a match!', 1500);
     }
     else{
+      Materialize.toast('Not a match', 1000);
 
     }
+    console.log(compareArray);
+    compareArray = [];
+    console.log(compareArray);
   }
-
-  var counter = 0;
-  $( ".card" ).click(function() {
-    // if (($('.card').val())/2 == $('.front').val()){
-    // ($('.card').css('display'))
-    counter += 1
-    if (counter == 2){
-      console.log(counter);
-      Materialize.toast('Checking for pairs!', 1500);
-      compare();
-      counter = 0
-    }else{
-      Materialize.toast('Storing Value', 1500);
-      first_card = randarr[9]
-    }
-  });
 
   // Need to change below to not function on click
   // but to activate when two cards are not a pair
@@ -166,71 +147,133 @@ $(document).ready(function(){
   });
 
   $('#back1').click(function(){
-    // $('#front1:first-child').innerHTML = arr[0];
-    var one = $('#front1:first-child').text();
-    Materialize.toast(one, 1500);
-    console.log(one);
+    var oneOne = $('#front1:first-child').text();
+    // Materialize.toast(oneOne, 1500);
+    compareArray.push(oneOne);
+    console.log(compareArray)
     $('#front1').show();
     $('#back1').hide();
   });
   $('#back2').click(function(){
+    var oneTwo = $('#front2:first-child').text();
+    compareArray.push(oneTwo);
+    console.log(compareArray);
     $('#front2').show();
     $('#back2').hide();
   });
   $('#back3').click(function(){
+    var oneThree = $('#front3:first-child').text();
+    compareArray.push(oneThree);
+    console.log(compareArray);
     $('#front3').show();
     $('#back3').hide();
   });
   $('#back4').click(function(){
+    var oneFour = $('#front4:first-child').text();
+    compareArray.push(oneFour);
+    console.log(compareArray);
     $('#front4').show();
     $('#back4').hide();
   });
   $('#back5').click(function(){
+    var twoOne = $('#front5:first-child').text();
+    compareArray.push(twoOne);
+    console.log(compareArray);
     $('#front5').show();
     $('#back5').hide();
   });
   $('#back6').click(function(){
+    var twoTwo = $('#front6:first-child').text();
+    compareArray.push(twoTwo);
+    console.log(compareArray);
     $('#front6').show();
     $('#back6').hide();
   });
   $('#back7').click(function(){
+    var twoThree = $('#front7:first-child').text();
+    compareArray.push(twoThree);
+    console.log(compareArray);
     $('#front7').show();
     $('#back7').hide();
   });
   $('#back8').click(function(){
+    var twoFour = $('#front8:first-child').text();
+    compareArray.push(twoFour);
+    console.log(compareArray);
     $('#front8').show();
     $('#back8').hide();
   });
+
   $('#back9').click(function(){
+    var threeOne = $('#front9:first-child').text();
+    compareArray.push(threeOne);
+    console.log(compareArray);
     $('#front9').show();
     $('#back9').hide();
   });
   $('#back10').click(function(){
+    var threeTwo = $('#front10:first-child').text();
+    compareArray.push(threeTwo);
+    console.log(compareArray);
     $('#front10').show();
     $('#back10').hide();
   });
   $('#back11').click(function(){
+    var threeThree = $('#front11:first-child').text();
+    compareArray.push(threeThree);
+    console.log(compareArray);
     $('#front11').show();
     $('#back11').hide();
   });
   $('#back12').click(function(){
+    var threeFour = $('#front12:first-child').text();
+    compareArray.push(threeFour);
+    console.log(compareArray);
     $('#front12').show();
     $('#back12').hide();
   });
   $('#back13').click(function(){
+    var fourOne = $('#front13:first-child').text();
+    compareArray.push(fourOne);
+    console.log(compareArray);
     $('#front13').show();
     $('#back13').hide();
   });
   $('#back14').click(function(){
+    var fourTwo = $('#front14:first-child').text();
+    compareArray.push(fourTwo);
+    console.log(compareArray);
     $('#front14').show();
     $('#back14').hide();
   });
   $('#back15').click(function(){
+    var fourThree = $('#front15:first-child').text();
+    compareArray.push(fourThree);
+    console.log(compareArray);
     $('#front15').show();
     $('#back15').hide();
   });
   $('#back16').click(function(){
+    var fourFour = $('#front16:first-child').text();
+    compareArray.push(fourFour);
+    console.log(compareArray);
     $('#front16').show();
     $('#back16').hide();
   });
+
+  var counter = 0;
+  $( ".card" ).click(function() {
+    // if (($('.card').val())/2 == $('.front').val()){
+    // ($('.card').css('display'))
+    counter += 1
+    if (counter == 2){
+      Materialize.toast('Checking for pairs!', 1500);
+      compare();
+      counter = 0
+    }else{
+      Materialize.toast('Storing Value', 1500);
+    }
+  });
+
 });
+
