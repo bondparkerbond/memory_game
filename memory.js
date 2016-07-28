@@ -1,5 +1,7 @@
-var first_card = 9;
 var compareArray = []
+var cardOneId = "";
+var cardTwoId = "";
+var totalMatches = 0;
 $(document).ready(function(){
   /**
    * Randomize array element order in-place.
@@ -23,10 +25,15 @@ $(document).ready(function(){
   var arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
   randarr = shuffle(arr);
   console.log(arr);
-
+  // remake the HTML based on new numbers
   for (var i = 0; i < arr.length; i++){
-    var el = '#front' + (i+1).toString() + ':first-child'
-    $(el).html("<h4 class='center-align'>" + randarr[i] + "</h4>");
+    if(i<9){
+      var el = '#front0' + (i+1).toString() + ':first-child'
+      $(el).html("<h4 class='center-align'>" + randarr[i] + "</h4>");
+    } else {
+      var el = '#front' + (i+1).toString() + ':first-child'
+      $(el).html("<h4 class='center-align'>" + randarr[i] + "</h4>");
+    }
   }
 
   //onclick function add flip class and then check to see if cards are the same
@@ -49,77 +56,94 @@ $(document).ready(function(){
   // else // if no cards flipped over, flip over card
   //      // store value to compare?
   function compare(){
-    if(compareArray[0] === compareArray[1] && compareArray[1] ){
-      Materialize.toast('Its a match!', 1500);
+    if(compareArray[0] === compareArray[1] && compareArray[1] ) {
+      totalMatches += 1
+      setTimeout(function () {
+        if(totalMatches === 8) {
+          Materialize.toast('Congragulations, you won!', 3000);
+        } else {
+          Materialize.toast('Its a match!', 1500);
+        }
+      }, 150);
     }
     else{
-      Materialize.toast('Not a match', 1000);
-      
-      $('#front1').click(function(){
-        $('#front1').hide();
-        $('#back1').show();
-      });
-      $('#front2').click(function(){
-        $('#front2').hide();
-        $('#back2').show();
-      });
-      $('#front3').click(function(){
-        $('#front3').hide();
-        $('#back3').show();
-      });
-      $('#front4').click(function(){
-        $('#front4').hide();
-        $('#back4').show();
-      });
-      $('#front5').click(function(){
-        $('#front5').hide();
-        $('#back5').show();
-      });
-      $('#front6').click(function(){
-        $('#front6').hide();
-        $('#back6').show();
-      });
-      $('#front7').click(function(){
-        $('#front7').hide();
-        $('#back7').show();
-      });
-      $('#front8').click(function(){
-        $('#front8').hide();
-        $('#back8').show();
-      });
-      $('#front9').click(function(){
-        $('#front9').hide();
-        $('#back9').show();
-      });
-      $('#front10').click(function(){
-        $('#front10').hide();
-        $('#back10').show();
-      });
-      $('#front11').click(function(){
-        $('#front11').hide();
-        $('#back11').show();
-      });
-      $('#front12').click(function(){
-        $('#front12').hide();
-        $('#back12').show();
-      });
-      $('#front13').click(function(){
-        $('#front13').hide();
-        $('#back13').show();
-      });
-      $('#front14').click(function(){
-        $('#front14').hide();
-        $('#back14').show();
-      });
-      $('#front15').click(function(){
-        $('#front15').hide();
-        $('#back15').show();
-      });
-      $('#front16').click(function(){
-        $('#front16').hide();
-        $('#back16').show();
-      });
+      var idOneNum = cardOneId.slice(-2);
+      var idTwoNum = cardTwoId.slice(-2);
 
+      setTimeout(function () {
+        Materialize.toast('Not a match', 1500);
+      }, 200);
+        
+      setTimeout(function () {
+        $(`#front${idOneNum}`).hide();
+        $(`#back${idOneNum}`).show();
+        $(`#front${idTwoNum}`).hide();
+        $(`#back${idTwoNum}`).show();
+      }, 1200);
+      // $('#front1').click(function(){
+      //   $('#front1').hide();
+      //   $('#back1').show();
+      // });
+      // $('#front2').click(function(){
+      //   $('#front2').hide();
+      //   $('#back2').show();
+      // });
+      // $('#front3').click(function(){
+      //   $('#front3').hide();
+      //   $('#back3').show();
+      // });
+      // $('#front4').click(function(){
+      //   $('#front4').hide();
+      //   $('#back4').show();
+      // });
+      // $('#front5').click(function(){
+      //   $('#front5').hide();
+      //   $('#back5').show();
+      // });
+      // $('#front6').click(function(){
+      //   $('#front6').hide();
+      //   $('#back6').show();
+      // });
+      // $('#front7').click(function(){
+      //   $('#front7').hide();
+      //   $('#back7').show();
+      // });
+      // $('#front8').click(function(){
+      //   $('#front8').hide();
+      //   $('#back8').show();
+      // });
+      // $('#front9').click(function(){
+      //   $('#front9').hide();
+      //   $('#back9').show();
+      // });
+      // $('#front10').click(function(){
+      //   $('#front10').hide();
+      //   $('#back10').show();
+      // });
+      // $('#front11').click(function(){
+      //   $('#front11').hide();
+      //   $('#back11').show();
+      // });
+      // $('#front12').click(function(){
+      //   $('#front12').hide();
+      //   $('#back12').show();
+      // });
+      // $('#front13').click(function(){
+      //   $('#front13').hide();
+      //   $('#back13').show();
+      // });
+      // $('#front14').click(function(){
+      //   $('#front14').hide();
+      //   $('#back14').show();
+      // });
+      // $('#front15').click(function(){
+      //   $('#front15').hide();
+      //   $('#back15').show();
+      // });
+      // $('#front16').click(function(){
+      //   $('#front16').hide();
+      //   $('#back16').show();
+      // });
     }
     console.log(compareArray);
     compareArray = [];
@@ -130,70 +154,70 @@ $(document).ready(function(){
   // but to activate when two cards are not a pair
   // solves edge case of clicking on same card twice
 
-  $('#back1').click(function(){
-    var oneOne = $('#front1:first-child').text();
+  $('#back01').click(function(){
+    var oneOne = $('#front01:first-child').text();
     // Materialize.toast(oneOne, 1500);
     compareArray.push(oneOne);
     console.log(compareArray)
-    $('#front1').show();
-    $('#back1').hide();
+    $('#front01').show();
+    $('#back01').hide();
   });
-  $('#back2').click(function(){
-    var oneTwo = $('#front2:first-child').text();
+  $('#back02').click(function(){
+    var oneTwo = $('#front02:first-child').text();
     compareArray.push(oneTwo);
     console.log(compareArray);
-    $('#front2').show();
-    $('#back2').hide();
+    $('#front02').show();
+    $('#back02').hide();
   });
-  $('#back3').click(function(){
-    var oneThree = $('#front3:first-child').text();
+  $('#back03').click(function(){
+    var oneThree = $('#front03:first-child').text();
     compareArray.push(oneThree);
     console.log(compareArray);
-    $('#front3').show();
-    $('#back3').hide();
+    $('#front03').show();
+    $('#back03').hide();
   });
-  $('#back4').click(function(){
-    var oneFour = $('#front4:first-child').text();
+  $('#back04').click(function(){
+    var oneFour = $('#front04:first-child').text();
     compareArray.push(oneFour);
     console.log(compareArray);
-    $('#front4').show();
-    $('#back4').hide();
+    $('#front04').show();
+    $('#back04').hide();
   });
-  $('#back5').click(function(){
-    var twoOne = $('#front5:first-child').text();
+  $('#back05').click(function(){
+    var twoOne = $('#front05:first-child').text();
     compareArray.push(twoOne);
     console.log(compareArray);
-    $('#front5').show();
-    $('#back5').hide();
+    $('#front05').show();
+    $('#back05').hide();
   });
-  $('#back6').click(function(){
-    var twoTwo = $('#front6:first-child').text();
+  $('#back06').click(function(){
+    var twoTwo = $('#front06:first-child').text();
     compareArray.push(twoTwo);
     console.log(compareArray);
-    $('#front6').show();
-    $('#back6').hide();
+    $('#front06').show();
+    $('#back06').hide();
   });
-  $('#back7').click(function(){
-    var twoThree = $('#front7:first-child').text();
+  $('#back07').click(function(){
+    var twoThree = $('#front07:first-child').text();
     compareArray.push(twoThree);
     console.log(compareArray);
-    $('#front7').show();
-    $('#back7').hide();
+    $('#front07').show();
+    $('#back07').hide();
   });
-  $('#back8').click(function(){
-    var twoFour = $('#front8:first-child').text();
+  $('#back08').click(function(){
+    var twoFour = $('#front08:first-child').text();
     compareArray.push(twoFour);
     console.log(compareArray);
-    $('#front8').show();
-    $('#back8').hide();
+    $('#front08').show();
+    $('#back08').hide();
   });
 
-  $('#back9').click(function(){
-    var threeOne = $('#front9:first-child').text();
+  $('#back09').click(function(){
+    var threeOne = $('#front09:first-child').text();
     compareArray.push(threeOne);
     console.log(compareArray);
-    $('#front9').show();
-    $('#back9').hide();
+    $('#front09').show();
+    $('#back09').hide();
   });
   $('#back10').click(function(){
     var threeTwo = $('#front10:first-child').text();
@@ -246,16 +270,18 @@ $(document).ready(function(){
   });
 
   var counter = 0;
-  $( ".card" ).click(function() {
+  $( ".back" ).click(function() {
     // if (($('.card').val())/2 == $('.front').val()){
     // ($('.card').css('display'))
     counter += 1
     if (counter == 2){
-      Materialize.toast('Checking for pairs!', 1500);
+      // Materialize.toast('Checking for pairs!', 1000);
+      cardTwoId = this.id
       compare();
       counter = 0
     }else{
-      Materialize.toast('Storing Value', 1500);
+      cardOneId = this.id 
+      // Materialize.toast('Storing Value', 1500);
     }
   });
 

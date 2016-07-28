@@ -25,29 +25,38 @@
 }
 /* Define the 3D perspective view and dimension of each card. */
 .card {
- -webkit-perspective: 600;
- /*margin: auto;*/
- /*margin: 5px;*/
- position: absolute;
- margin-left: 12px;
- width: 70px;
- height: 80px;
- -moz-transition: all .3s;
- -webkit-transition: all .3s;
- transition: all .3s;
- cursor: pointer;
+  -webkit-perspective: 600;
+  /*margin: auto;*/
+  /*margin: 5px;*/
+  position: absolute;
+  margin-left: 12px;
+  width: 70px;
+  height: 80px;
+  -moz-transition: all .3s;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  cursor: pointer;
 }
 .front {
+  pointer-events: none;
+  cursor: default;
 }
+
 .back{
  /*opacity: 0.5;*/
 }
+
 .card-removed {
  opacity: 0;
 }
-#front1 {
 
+.not-clickable {
+  pointer-events: none;
+  cursor: default;
 }
-#back1 {
 
+#front1 {
+}
+
+#back1 {
 }
